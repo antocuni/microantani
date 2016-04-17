@@ -14,7 +14,8 @@ class RainDrop(object):
         self.rows = [[0]*5 for _ in range(5)]
         
     def step(self):
-        choices = [0]*9 + [9] # 10% of probability to have a drop
+        brightness = list(range(10)) # from 0 to 9, 9=brightest
+        choices = [0]*89 + brightness # ~10% of probability to have a drop of any non-zero brightness
         row = [random.choice(choices) for _ in range(5)]
         self.rows.insert(0, row)
         self.rows.pop()
