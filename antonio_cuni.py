@@ -61,7 +61,7 @@ class RainDropTest(RainDrop):
 
 
 
-r = RainDropTest() # to test on linux
-#r = RainDrop()     # for micro:bit
+#r = RainDropTest() # to test on linux
+r = RainDrop()     # for micro:bit
 r.run()
         
