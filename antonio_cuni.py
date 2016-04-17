@@ -19,13 +19,24 @@ class RainDrop(object):
         self.rows.insert(0, row)
         self.rows.pop()
 
+    def get_delay(self):
+        """
+        Return the delay depending on the Z accelerometer.
+        """
+        # Completely untested, I had to write it blindly :(
+        z = accelerometer.get_z()
+        delay = 1-z
+        delay = delay*(800) + 200 # always generate a delay between 0.2 and 1 seconds
+        return int(delay)
+
     def run(self):
         while True:
             self.step()
             self.show()
-            sleep(300)
+            sleep(self.get_delay())
 
     def show(self):
+        # Completely untested, I had to write it blindly :(
         display.clear()
         for y, row in enumerate(self.rows):
             for x, pixel in enumerate(row):
@@ -44,6 +55,8 @@ class RainDropTest(RainDrop):
             print()
         print()
 
+    def get_delay(self):
+        return 300 # bah, boring :(
 
 
 
